@@ -1,5 +1,0 @@
-#sortable { list-style-type: none; margin: 10px 0 0; padding: 0; width: 100%; }
-#sortable ul { margin-left:20px; list-style: none; }
-#sortable li { margin: 4px 0; padding: 4px 0x; border: 1px solid #DDDDDD; -moz-border-radius:6px; cursor: move}
-#sortable li span { display: block; background: #f7f7f7;  padding: 5px; color:#808080; font-size: font-size:14px; font-weight:bold;}
-#sortable li.placeholder{border: dashed 2px #ccc;background-color:#FFF;height:20px;}
