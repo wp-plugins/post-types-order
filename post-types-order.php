@@ -5,7 +5,7 @@ Plugin URI: http://www.nsp-code.com
 Description: Order Post Types Objects using a Drag and Drop Sortable javascript capability
 Author: NSP CODE
 Author URI: http://www.nsp-code.com 
-Version: 1.0.2
+Version: 1.0.9
 */
 
 define('CPTPATH', ABSPATH.'wp-content/plugins/post-types-order');
@@ -20,13 +20,35 @@ function CPTOrderPosts($orderBy)
         return($orderBy);
     }
 
-if (is_admin())
-	add_action( 'plugins_loaded', 'initCPT' );
+    
+add_action('wp_loaded', 'initCPT' );
+add_action('admin_menu', 'cpt_plugin_menu');
+  
+
+function cpt_plugin_menu() 
+    {
+        include (CPTPATH . '/include/options.php');
+        add_options_page('Post Types Order', 'Post Types Order', 'manage_options', 'cpto-options', 'cpt_plugin_options');
+    }
 	
 function initCPT() 
     {
-	    global $custom_post_type_order;
-	    $custom_post_type_order = new CPT();
+	    global $custom_post_type_order, $userdata;
+
+        $options = get_option('cpto_options');
+        if (is_numeric($options['level']))
+                {
+                    global $userdata;
+                    if ($userdata->wp_user_level >= $options['level'])
+                    $custom_post_type_order = new CPT();     
+                }
+            else
+                {
+                    if (is_admin())
+                        {
+                            $custom_post_type_order = new CPT();
+                        }        
+                }
     }
     
     
@@ -113,7 +135,7 @@ class CPT
 	    
 	    function CPT() 
             {
-		        add_action( 'admin_init', array(&$this, 'registerJavaScript'), 11 );
+		        add_action( 'admin_init', array(&$this, 'registerFiles'), 11 );
                 add_action( 'admin_init', array(&$this, 'checkPost'), 10 );
 		        add_action( 'admin_menu', array(&$this, 'addMenu') );
                 
@@ -122,17 +144,16 @@ class CPT
 		        add_action( 'wp_ajax_update-custom-type-order', array(&$this, 'saveAjaxOrder') );
 	        }
 
-	    function registerJavaScript() 
+	    function registerFiles() 
             {
 		        if ( $this->current_post_type != null ) 
                     {
                         wp_enqueue_script('jQuery');
                         wp_enqueue_script('jquery-ui-sortable');
-                        
-                        wp_register_style('CPTStyleSheets', CPTURL . '/css/cpt.css');
-                        wp_enqueue_style( 'CPTStyleSheets');
-
 		            }
+                    
+                wp_register_style('CPTStyleSheets', CPTURL . '/css/cpt.css');
+                wp_enqueue_style( 'CPTStyleSheets');
 	        }
 	    
 	    function checkPost() 
@@ -176,14 +197,15 @@ class CPT
 
 	    function addMenu() 
             {
-		        //put a menu for all custom_type
+		        global $userdata;
+                //put a menu for all custom_type
                 $post_types = get_post_types();
                 foreach( $post_types as $post_type_name ) 
                     {
                         if ($post_type_name == 'post')
-                            add_submenu_page('edit.php', 'Re-Order', 'Re-Order', 'manage_options', 'order-post-type-'.$post_type_name, array(&$this, 'pageManage') );
+                            add_submenu_page('edit.php', 'Re-Order', 'Re-Order', $userdata->wp_user_level, 'order-post-type-'.$post_type_name, array(&$this, 'pageManage') );
                         else
-                            add_submenu_page('edit.php?post_type='.$post_type_name, 'Re-Order', 'Re-Order', 'manage_options', 'order-post-type-'.$post_type_name, array(&$this, 'pageManage') );
+                            add_submenu_page('edit.php?post_type='.$post_type_name, 'Re-Order', 'Re-Order', $userdata->wp_user_level, 'order-post-type-'.$post_type_name, array(&$this, 'pageManage') );
 		            }
 	        }
 	    
