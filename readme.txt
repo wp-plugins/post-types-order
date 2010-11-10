@@ -30,6 +30,9 @@ Feel free to contact me at electronice_delphi@yahoo.com
 
 == Change Log ==
 
+= 1.1.2 = 
+ - Bug Fix
+ 
 = 1.0.9 =
  - Admin will set the roles which can use the plugins (thanks for support Nick - peerpressurecreative.com)
 

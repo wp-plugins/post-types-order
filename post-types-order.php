@@ -5,7 +5,7 @@ Plugin URI: http://www.nsp-code.com
 Description: Order Post Types Objects using a Drag and Drop Sortable javascript capability
 Author: NSP CODE
 Author URI: http://www.nsp-code.com 
-Version: 1.0.9
+Version: 1.1.2
 */
 
 define('CPTPATH', ABSPATH.'wp-content/plugins/post-types-order');
@@ -39,7 +39,7 @@ function initCPT()
         if (is_numeric($options['level']))
                 {
                     global $userdata;
-                    if ($userdata->wp_user_level >= $options['level'])
+                    if ($userdata->user_level >= $options['level'])
                     $custom_post_type_order = new CPT();     
                 }
             else
@@ -203,9 +203,9 @@ class CPT
                 foreach( $post_types as $post_type_name ) 
                     {
                         if ($post_type_name == 'post')
-                            add_submenu_page('edit.php', 'Re-Order', 'Re-Order', $userdata->wp_user_level, 'order-post-type-'.$post_type_name, array(&$this, 'pageManage') );
+                            add_submenu_page('edit.php', 'Re-Order', 'Re-Order', $userdata->user_level, 'order-post-type-'.$post_type_name, array(&$this, 'pageManage') );
                         else
-                            add_submenu_page('edit.php?post_type='.$post_type_name, 'Re-Order', 'Re-Order', $userdata->wp_user_level, 'order-post-type-'.$post_type_name, array(&$this, 'pageManage') );
+                            add_submenu_page('edit.php?post_type='.$post_type_name, 'Re-Order', 'Re-Order', $userdata->user_level, 'order-post-type-'.$post_type_name, array(&$this, 'pageManage') );
 		            }
 	        }
 	    
