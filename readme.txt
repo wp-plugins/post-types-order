@@ -4,7 +4,7 @@ Donate link: http://www.nsp-code.com/donate.php
 Tags: post type order, custom post type order, post types order, page order, post order, admin post order, admin custom post order, custom order, ajax, re-order, drag-and-drop, admin, manage, custom, post, custom type, post type, order, ordering, sort, post, page
 Requires at least: 3.0
 Tested up to: 3.0.1
-Stable tag: 1.0.9
+Stable tag: 1.1.2
 
 Order Post Types Objects using a Drag and Drop Sortable javascript capability
 
