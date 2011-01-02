@@ -5,7 +5,7 @@ Plugin URI: http://www.nsp-code.com
 Description: Order Post Types Objects using a Drag and Drop Sortable javascript capability
 Author: NSP CODE
 Author URI: http://www.nsp-code.com 
-Version: 1.3.8
+Version: 1.3.9
 */
 
 define('CPTPATH', ABSPATH.'wp-content/plugins/post-types-order');
@@ -98,7 +98,7 @@ function cpto_load_textdomain()
 function cpto_plugin_menu() 
     {
         include (CPTPATH . '/include/options.php');
-        add_options_page('Post Types Order', 'Post Types Order', 'manage_options', 'cpto-options', 'cpt_plugin_options');
+        add_options_page('Post Types Order', '<img class="menu_pto" src="'. CPTURL .'/images/menu-icon.gif" alt="" />Post Types Order', 'manage_options', 'cpto-options', 'cpt_plugin_options');
     }
 	
 function initCPTO() 
@@ -106,19 +106,15 @@ function initCPTO()
 	    global $custom_post_type_order, $userdata;
 
         $options = get_option('cpto_options');
-        if (is_numeric($options['level']))
-                {
-                    global $userdata;
-                    if ($userdata->user_level >= $options['level'])
-                    $custom_post_type_order = new CPTO();     
-                }
-            else
-                {
-                    if (is_admin())
-                        {
-                            $custom_post_type_order = new CPTO();
-                        }        
-                }
+
+        if (is_admin())
+            {
+                if (is_numeric($options['level']))
+                    {
+                        if (userdata_get_user_level() >= $options['level'])
+                            $custom_post_type_order = new CPTO();     
+                    }
+            }        
     }
     
     
@@ -236,9 +232,9 @@ class CPTO
                             continue;
                         
                         if ($post_type_name == 'post')
-                            add_submenu_page('edit.php', 'Re-Order', 'Re-Order', $userdata->user_level, 'order-post-types-'.$post_type_name, array(&$this, 'SortPage') );
+                            add_submenu_page('edit.php', 'Re-Order', 'Re-Order', userdata_get_user_level(), 'order-post-types-'.$post_type_name, array(&$this, 'SortPage') );
                         else
-                            add_submenu_page('edit.php?post_type='.$post_type_name, 'Re-Order', 'Re-Order', $userdata->user_level, 'order-post-types-'.$post_type_name, array(&$this, 'SortPage') );
+                            add_submenu_page('edit.php?post_type='.$post_type_name, 'Re-Order', 'Re-Order', userdata_get_user_level(), 'order-post-types-'.$post_type_name, array(&$this, 'SortPage') );
 		            }
 	        }
 	    
@@ -291,17 +287,6 @@ class CPTO
 				        });
 			        </script>
                     
-                    
-                    <h3>Did you found this plug-in useful? Please support our work with a donation.</h3>
-                    <div id="donate_form">
-                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-                        <input type="hidden" name="cmd" value="_s-xclick">
-                        <input type="hidden" name="hosted_button_id" value="CU22TFDKJMLAE">
-                        <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                        <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-                        </form>
-                    </div>
-                    <br />
 		        </div>
 		        <?php
 	        }
@@ -368,5 +353,23 @@ class CPTO
 		        return call_user_func_array(array(&$walker, 'walk'), $args);
 	        }
     }
+
+    
+    
+function userdata_get_user_level()
+    {
+        global $userdata;
+        
+        $user_level = '';
+        for ($i=10; $i >= 0;$i--)
+            {
+                if (current_user_can('level_' . $i) === TRUE)
+                    {
+                        $user_level = $i;
+                        break;
+                    }    
+            }        
+        return ($user_level);
+    }    
 
 ?>

@@ -3,10 +3,10 @@ Contributors: Nsp Code
 Donate link: http://www.nsp-code.com/donate.php
 Tags: post type order, custom post type order, post types order, page order, post order, admin post order, post types sort, post type sort, admin custom post order, custom order, ajax, re-order, drag-and-drop, admin, manage, custom, post, custom type, post type, order, ordering, sort, post, page
 Requires at least: 2.8
-Tested up to: 3.0.2
-Stable tag: 1.3.8
+Tested up to: 3.0.4
+Stable tag: 1.3.9
 
-Order Post Types Objects using a Drag and Drop Sortable javascript capability
+Order Post Types Objects (posts, pages, custom post types) using a Drag and Drop Sortable javascript capability
 
 == Description ==
 
@@ -47,10 +47,13 @@ All ideas are welcome and i put them on my list to be implemented into the new v
 
 == Change Log ==
 
+= 1.3.9 =
+ - Re-Order Menu Item Appearance fix   
+
 = 1.3.8 = 
  - Another Plugin conflict fix (thanks Steve Reed)
- - Multiple Improvments (thanks for support Video Geek - http://bestpocketvideocams.com)
- - Localisation Update (thanks Gabriel Reguly - http://ppgr.com.br/wordpress/)
+ - Multiple Improvments (thanks for support Video Geek - bestpocketvideocams.com)
+ - Localisation Update (thanks Gabriel Reguly - ppgr.com.br/wordpress/)
 
 = 1.1.2 = 
  - Bug Fix
