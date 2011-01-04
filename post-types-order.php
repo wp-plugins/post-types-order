@@ -119,7 +119,7 @@ function initCPTO()
                     }
                     else
                         {
-                            //$custom_post_type_order = new CPTO();   
+                            $custom_post_type_order = new CPTO();   
                         }
             }        
     }
