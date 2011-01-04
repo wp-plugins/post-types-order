@@ -23,7 +23,7 @@ function cpt_plugin_options()
                     ?>
                       <div class="wrap"> 
                         <div id="icon-settings" class="icon32"></div>
-                            <h2>General Setings</h2>
+                            <h2>General Settings</h2>
                            
                             <form id="form_data" name="form" method="post">   
                                 <br />
@@ -101,15 +101,35 @@ $args = array(
                                         
                                     </tbody>
                                 </table>
-                               
-                    
+                                                   
                                 <p class="submit">
                                     <input type="submit" name="Submit" class="button-primary" value="<?php _e('Save Settings', 'cpt') ?>">
                                </p>
                             
                                 <input type="hidden" name="form_submit" value="true" />
                                 
+                                
+                                <h2 class="subtitle">Improvments</h2>
+                                <p>Please submit and vote for comming features</p>
+                                
+                                
+                                <script type='text/javascript' src='http://crowdsound.com/widgets/init?&aid=4823&width=800&height=500'></script>
+                                
                             </form>
+                            
+                            
+                    <br /> <br />         
+                    <h4>Did you found this plug-in useful? Please support our work with a donation.</h4>
+                    <h4>Do you need a certain feature? Please consider a donation and ask for it!.</h4>
+                    <div id="donate_form">
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="CU22TFDKJMLAE">
+                        <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                        <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                        </form>
+                    </div>
+                    <br />
                             
                     <?php  
             echo '</div>';   

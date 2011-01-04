@@ -5,7 +5,7 @@ Plugin URI: http://www.nsp-code.com
 Description: Order Post Types Objects using a Drag and Drop Sortable javascript capability
 Author: NSP CODE
 Author URI: http://www.nsp-code.com 
-Version: 1.3.9
+Version: 1.4.1
 */
 
 define('CPTPATH', ABSPATH.'wp-content/plugins/post-types-order');
@@ -24,6 +24,9 @@ function CPTO_activated()
             
         if (!isset($options['adminsort']))
             $options['adminsort'] = '1';
+            
+        if (!isset($options['level']))
+            $options['level'] = 0;
             
         update_option('cpto_options', $options);
     }
@@ -114,6 +117,10 @@ function initCPTO()
                         if (userdata_get_user_level() >= $options['level'])
                             $custom_post_type_order = new CPTO();     
                     }
+                    else
+                        {
+                            //$custom_post_type_order = new CPTO();   
+                        }
             }        
     }
     
