@@ -47,10 +47,10 @@ All ideas are welcome and i put them on my list to be implemented into the new v
 
 == Change Log ==
 
-= 1.4.3
+= 1.4.3 =
  - Small improvments
 
-= 1.4.1 
+= 1.4.1 =
  - Re-Order Menu Item Appearance fix for update versions
  
 = 1.3.9 =
