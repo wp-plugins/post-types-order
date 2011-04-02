@@ -5,12 +5,11 @@ Plugin URI: http://www.nsp-code.com
 Description: Order Post Types Objects using a Drag and Drop Sortable javascript capability
 Author: NSP CODE
 Author URI: http://www.nsp-code.com 
-Version: 1.4.1
+Version: 1.4.3
 */
 
 define('CPTPATH', ABSPATH.'wp-content/plugins/post-types-order');
 define('CPTURL', get_option('siteurl').'/wp-content/plugins/post-types-order');
-
 
 register_deactivation_hook(__FILE__, 'CPTO_deactivated');
 register_activation_hook(__FILE__, 'CPTO_activated');
@@ -35,6 +34,8 @@ function CPTO_deactivated()
     {
         
     }
+    
+include_once(CPTPATH . '/include/functions.php');
 
 add_filter('pre_get_posts', 'CPTO_pre_get_posts');
 function CPTO_pre_get_posts($query)
@@ -81,13 +82,23 @@ function CPTOrderPosts($orderBy)
         return($orderBy);
     }
 
+$is_configured = get_option('CPT_configured');
+if ($is_configured == '')
+    add_action( 'admin_notices', 'CPTO_admin_notices');
     
-add_action('wp_loaded', 'initCPTO' );
-add_action('admin_menu', 'cpto_plugin_menu');
+function CPTO_admin_notices()
+    {
+        if (isset($_POST['form_submit']))
+            return;
+        ?>
+            <div class="error fade">
+                <p><strong>Post Types Order must be configured. Please go to <a href="<?php echo get_admin_url() ?>options-general.php?page=cpto-options">Settings Page</a> make the configuration and save</strong></p>
+            </div>
+        <?php
+    }
 
-add_action( 'plugins_loaded', 'cpto_load_textdomain', 2 );
 
-
+add_action( 'plugins_loaded', 'cpto_load_textdomain', 2 ); 
 function cpto_load_textdomain() 
     {
         $locale = get_locale();
@@ -97,13 +108,15 @@ function cpto_load_textdomain()
         }
     }
   
-
+add_action('admin_menu', 'cpto_plugin_menu'); 
 function cpto_plugin_menu() 
     {
         include (CPTPATH . '/include/options.php');
         add_options_page('Post Types Order', '<img class="menu_pto" src="'. CPTURL .'/images/menu-icon.gif" alt="" />Post Types Order', 'manage_options', 'cpto-options', 'cpt_plugin_options');
     }
-	
+
+    
+add_action('wp_loaded', 'initCPTO' ); 	
 function initCPTO() 
     {
 	    global $custom_post_type_order, $userdata;
@@ -241,7 +254,10 @@ class CPTO
                         if ($post_type_name == 'post')
                             add_submenu_page('edit.php', 'Re-Order', 'Re-Order', userdata_get_user_level(), 'order-post-types-'.$post_type_name, array(&$this, 'SortPage') );
                         else
-                            add_submenu_page('edit.php?post_type='.$post_type_name, 'Re-Order', 'Re-Order', userdata_get_user_level(), 'order-post-types-'.$post_type_name, array(&$this, 'SortPage') );
+                            {
+                                if (!is_post_type_hierarchical($post_type_name))
+                                    add_submenu_page('edit.php?post_type='.$post_type_name, 'Re-Order', 'Re-Order', userdata_get_user_level(), 'order-post-types-'.$post_type_name, array(&$this, 'SortPage') );
+                            }
 		            }
 	        }
 	    
@@ -253,6 +269,8 @@ class CPTO
 			        <div class="icon32" id="icon-edit"><br></div>
                     <h2><?php echo $this->current_post_type->labels->singular_name . ' -  Re-order '?></h2>
 
+                    <?php cpt_info_box(); ?>  
+                    
 			        <div id="ajax-response"></div>
 			        
 			        <noscript>
@@ -278,7 +296,6 @@ class CPTO
 					        jQuery("#sortable").sortable({
 						        'tolerance':'intersect',
 						        'cursor':'pointer',
-                                'grid': [50, 10],
 						        'items':'li',
 						        'placeholder':'placeholder',
 						        'nested': 'ul'
@@ -360,23 +377,6 @@ class CPTO
 		        return call_user_func_array(array(&$walker, 'walk'), $args);
 	        }
     }
-
-    
-    
-function userdata_get_user_level()
-    {
-        global $userdata;
-        
-        $user_level = '';
-        for ($i=10; $i >= 0;$i--)
-            {
-                if (current_user_can('level_' . $i) === TRUE)
-                    {
-                        $user_level = $i;
-                        break;
-                    }    
-            }        
-        return ($user_level);
-    }    
+   
 
 ?>

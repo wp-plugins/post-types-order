@@ -8,4 +8,8 @@
 h2.subtitle {font-size: 15px; font-style: italic; font-weight: bold}
 .wrap .example { color: #666666; font-size: 11px; font-weight: bold}
 
+#cpt_info_box {padding: 0 10px; border: 1px dashed #21759B; background-color: #F1F1F1}
+#cpt_info_box p {font-size: 11px}
+#cpt_info_box #donate_form {float: right; padding: 10px 0 10px 10px}
+
 .menu_pto {margin-bottom: -2px; display: inline; padding-right: 2px}
