@@ -5,7 +5,7 @@ Plugin URI: http://www.nsp-code.com
 Description: Order Post Types Objects using a Drag and Drop Sortable javascript capability
 Author: NSP CODE
 Author URI: http://www.nsp-code.com 
-Version: 1.4.3
+Version: 1.4.6
 */
 
 define('CPTPATH', ABSPATH.'wp-content/plugins/post-types-order');
@@ -135,6 +135,158 @@ function initCPTO()
                             $custom_post_type_order = new CPTO();   
                         }
             }        
+    }
+    
+add_filter('get_previous_post_where', 'cpto_get_previous_post_where');
+add_filter('get_previous_post_sort', 'cpto_get_previous_post_sort');
+add_filter('get_next_post_where', 'cpto_get_next_post_where');
+add_filter('get_next_post_sort', 'cpto_get_next_post_sort');
+function cpto_get_previous_post_where($where)
+    {
+        global $post, $wpdb;
+
+        if ( empty( $post ) )
+            return $where;
+
+        $current_post_date = $post->post_date;
+
+        $join = '';
+        $posts_in_ex_cats_sql = '';
+        if ( $in_same_cat || !empty($excluded_categories) ) 
+            {
+                $join = " INNER JOIN $wpdb->term_relationships AS tr ON p.ID = tr.object_id INNER JOIN $wpdb->term_taxonomy tt ON tr.term_taxonomy_id = tt.term_taxonomy_id";
+
+                if ( $in_same_cat ) {
+                    $cat_array = wp_get_object_terms($post->ID, 'category', array('fields' => 'ids'));
+                    $join .= " AND tt.taxonomy = 'category' AND tt.term_id IN (" . implode(',', $cat_array) . ")";
+                }
+
+                $posts_in_ex_cats_sql = "AND tt.taxonomy = 'category'";
+                if ( !empty($excluded_categories) ) {
+                    $excluded_categories = array_map('intval', explode(' and ', $excluded_categories));
+                    if ( !empty($cat_array) ) {
+                        $excluded_categories = array_diff($excluded_categories, $cat_array);
+                        $posts_in_ex_cats_sql = '';
+                    }
+
+                    if ( !empty($excluded_categories) ) {
+                        $posts_in_ex_cats_sql = " AND tt.taxonomy = 'category' AND tt.term_id NOT IN (" . implode($excluded_categories, ',') . ')';
+                    }
+                }
+            }
+        $current_menu_order = $post->menu_order;
+        
+        //check if there are more posts with lower menu_order
+        $query = "SELECT p.* FROM $wpdb->posts AS p
+                    WHERE p.menu_order < '".$current_menu_order."' AND p.post_type = '". $post->post_type ."' AND p.post_status = 'publish' $posts_in_ex_cats_sql";
+        $results = $wpdb->get_results($query);
+                
+        if (count($results) > 0)
+            {
+                $where = $wpdb->prepare("WHERE p.menu_order < '".$current_menu_order."' AND p.post_type = '". $post->post_type ."' AND p.post_status = 'publish' $posts_in_ex_cats_sql");        
+            }
+            else
+                {
+                    $where = $wpdb->prepare("WHERE p.post_date < '".$current_post_date."' AND p.post_type = '". $post->post_type ."' AND p.post_status = 'publish' AND p.ID != '". $post->ID ."' $posts_in_ex_cats_sql");            
+                }
+        
+        return $where;
+    }
+    
+function cpto_get_previous_post_sort($sort)
+    {
+        global $post, $wpdb;
+        
+        $current_menu_order = $post->menu_order; 
+        
+        $query = "SELECT p.* FROM $wpdb->posts AS p
+                    WHERE p.menu_order < '".$current_menu_order."' AND p.post_type = '". $post->post_type ."' AND p.post_status = 'publish' $posts_in_ex_cats_sql";
+        $results = $wpdb->get_results($query);
+        
+        if (count($results) > 0)
+                {
+                    $sort = 'ORDER BY p.menu_order DESC, p.post_date ASC LIMIT 1';
+                }
+            else
+                {
+                    $sort = 'ORDER BY p.post_date DESC LIMIT 1';
+                }
+
+        return $sort;
+    }
+
+function cpto_get_next_post_where($where)
+    {
+        global $post, $wpdb;
+
+        if ( empty( $post ) )
+            return null;
+
+        $current_post_date = $post->post_date;
+
+        $join = '';
+        $posts_in_ex_cats_sql = '';
+        if ( $in_same_cat || !empty($excluded_categories) ) 
+            {
+                $join = " INNER JOIN $wpdb->term_relationships AS tr ON p.ID = tr.object_id INNER JOIN $wpdb->term_taxonomy tt ON tr.term_taxonomy_id = tt.term_taxonomy_id";
+
+                if ( $in_same_cat ) {
+                    $cat_array = wp_get_object_terms($post->ID, 'category', array('fields' => 'ids'));
+                    $join .= " AND tt.taxonomy = 'category' AND tt.term_id IN (" . implode(',', $cat_array) . ")";
+                }
+
+                $posts_in_ex_cats_sql = "AND tt.taxonomy = 'category'";
+                if ( !empty($excluded_categories) ) {
+                    $excluded_categories = array_map('intval', explode(' and ', $excluded_categories));
+                    if ( !empty($cat_array) ) {
+                        $excluded_categories = array_diff($excluded_categories, $cat_array);
+                        $posts_in_ex_cats_sql = '';
+                    }
+
+                    if ( !empty($excluded_categories) ) {
+                        $posts_in_ex_cats_sql = " AND tt.taxonomy = 'category' AND tt.term_id NOT IN (" . implode($excluded_categories, ',') . ')';
+                    }
+                }
+            }
+        
+        $current_menu_order = $post->menu_order;
+        
+        //check if there are more posts with lower menu_order
+        $query = "SELECT p.* FROM $wpdb->posts AS p
+                    WHERE p.menu_order > '".$current_menu_order."' AND p.post_type = '". $post->post_type ."' AND p.post_status = 'publish' $posts_in_ex_cats_sql";
+        $results = $wpdb->get_results($query);
+        
+        if (count($results) > 0)
+            {
+                $where = $wpdb->prepare("WHERE p.menu_order > '".$current_menu_order."' AND p.post_type = '". $post->post_type ."' AND p.post_status = 'publish' $posts_in_ex_cats_sql");        
+            }
+            else
+                {
+                    $where = $wpdb->prepare("WHERE p.post_date > '".$current_post_date."' AND p.post_type = '". $post->post_type ."' AND p.post_status = 'publish' AND p.ID != '". $post->ID ."' $posts_in_ex_cats_sql");            
+                }
+        
+        return $where;
+    }
+
+function cpto_get_next_post_sort($sort)
+    {
+        global $post, $wpdb; 
+        
+        $current_menu_order = $post->menu_order; 
+        
+        $query = "SELECT p.* FROM $wpdb->posts AS p
+                    WHERE p.menu_order > '".$current_menu_order."' AND p.post_type = '". $post->post_type ."' AND p.post_status = 'publish' $posts_in_ex_cats_sql";
+        $results = $wpdb->get_results($query);
+        if (count($results) > 0)
+                {
+                    $sort = 'ORDER BY p.menu_order ASC, p.post_date DESC LIMIT 1';
+                }
+            else
+                {
+                    $sort = 'ORDER BY p.post_date ASC LIMIT 1';
+                }
+        
+        return $sort;    
     }
     
     
