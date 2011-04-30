@@ -12,7 +12,7 @@ Order Post Types Objects (posts, pages, custom post types) using a Drag and Drop
 
 Order Post Types Objects using a Drag and Drop Sortable javascript capability
 It allow to reorder the posts for any custom post types you defined, including the default Posts and Pages. Also you can have the admin posts interface sorted per your new sort.
-This plugin it's developed by <a href="http://www.nsp-code.com">Nsp-Code</a>
+<br />This plugin it's developed by <a target="_blank" href="http://www.nsp-code.com">Nsp-Code</a>
 
 == Installation ==
 
