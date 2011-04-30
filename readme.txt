@@ -1,7 +1,7 @@
 === Post Types Order  ===
 Contributors: Nsp Code
 Donate link: http://www.nsp-code.com/donate.php
-Tags: post type order, custom post type order, post types order, page order, post order, admin post order, post types sort, post type sort, admin custom post order, custom order, ajax, re-order, drag-and-drop, admin, manage, custom, post, custom type, post type, order, ordering, sort, post, page
+Tags: post type order, custom post type order, post types order, pages order, posts order, admin posts order
 Requires at least: 2.8
 Tested up to: 3.1
 Stable tag: 1.4.6
