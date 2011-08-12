@@ -1,6 +1,6 @@
 <?php
 
-    function userdata_get_user_level()
+    function userdata_get_user_level($return_as_numeric = FALSE)
         {
             global $userdata;
             
@@ -10,6 +10,8 @@
                     if (current_user_can('level_' . $i) === TRUE)
                         {
                             $user_level = $i;
+                            if ($return_as_numeric === FALSE)
+                                $user_level = 'level_'.$i;    
                             break;
                         }    
                 }        
