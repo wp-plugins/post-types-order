@@ -2,10 +2,10 @@
 /*
 Plugin Name: Post Types Order
 Plugin URI: http://www.nsp-code.com
-Description: Order Post Types Objects using a Drag and Drop Sortable javascript capability
+Description: Order Posts and Post Types Objects using a Drag and Drop Sortable javascript capability
 Author: NSP CODE
 Author URI: http://www.nsp-code.com 
-Version: 1.4.9
+Version: 1.5.1
 */
 
 define('CPTPATH', ABSPATH.'wp-content/plugins/post-types-order');

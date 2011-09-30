@@ -1,10 +1,10 @@
 === Post Types Order  ===
 Contributors: Nsp Code
 Donate link: http://www.nsp-code.com/donate.php
-Tags: post type order, custom post type order, post types order, pages order, posts order, admin posts order
+Tags: posts order, post order, post type order, custom post type order, post types order, pages order, admin posts order
 Requires at least: 2.8
 Tested up to: 3.2.1
-Stable tag: 1.4.9
+Stable tag: 1.5.1
 
 Order Post Types Objects (posts, pages, custom post types) using a Drag and Drop Sortable javascript capability
 
@@ -48,7 +48,7 @@ All ideas are welcome and i put them on my list to be implemented into the new v
 
 == Change Log ==
 
-= 1.4.9 = 
+= 1.5.1 = 
  - Updates/Fixes
 
 = 1.4.6 = 
