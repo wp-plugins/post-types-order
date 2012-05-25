@@ -5,11 +5,15 @@ Plugin URI: http://www.nsp-code.com
 Description: Order Posts and Post Types Objects using a Drag and Drop Sortable javascript capability
 Author: NSP CODE
 Author URI: http://www.nsp-code.com 
-Version: 1.5.1
+Version: 1.5.4
 */
 
-define('CPTPATH', ABSPATH.'wp-content/plugins/post-types-order');
-define('CPTURL', get_option('siteurl').'/wp-content/plugins/post-types-order');
+define('CPTPATH',   plugin_dir_path(__FILE__));
+define('CPTURL',    plugins_url('', __FILE__));
+/*
+define('CPTPATH',   WP_PLUGIN_DIR  .'/post-types-order');
+define('CPTURL',    WP_PLUGIN_URL .'/post-types-order'); 
+*/
 
 register_deactivation_hook(__FILE__, 'CPTO_deactivated');
 register_activation_hook(__FILE__, 'CPTO_activated');
@@ -25,7 +29,7 @@ function CPTO_activated()
             $options['adminsort'] = '1';
             
         if (!isset($options['level']))
-            $options['level'] = 0;
+            $options['level'] = 8;
             
         update_option('cpto_options', $options);
     }
@@ -152,6 +156,7 @@ function cpto_get_previous_post_where($where)
 
         $join = '';
         $posts_in_ex_cats_sql = '';
+        if (isset($in_same_cat))
         if ( $in_same_cat || !empty($excluded_categories) ) 
             {
                 $join = " INNER JOIN $wpdb->term_relationships AS tr ON p.ID = tr.object_id INNER JOIN $wpdb->term_taxonomy tt ON tr.term_taxonomy_id = tt.term_taxonomy_id";
@@ -196,6 +201,7 @@ function cpto_get_previous_post_where($where)
 function cpto_get_previous_post_sort($sort)
     {
         global $post, $wpdb;
+        $posts_in_ex_cats_sql = '';
         
         $current_menu_order = $post->menu_order; 
         
@@ -226,6 +232,7 @@ function cpto_get_next_post_where($where)
 
         $join = '';
         $posts_in_ex_cats_sql = '';
+        if (isset($in_same_cat))
         if ( $in_same_cat || !empty($excluded_categories) ) 
             {
                 $join = " INNER JOIN $wpdb->term_relationships AS tr ON p.ID = tr.object_id INNER JOIN $wpdb->term_taxonomy tt ON tr.term_taxonomy_id = tt.term_taxonomy_id";
@@ -271,6 +278,7 @@ function cpto_get_next_post_where($where)
 function cpto_get_next_post_sort($sort)
     {
         global $post, $wpdb; 
+        $posts_in_ex_cats_sql = '';
         
         $current_menu_order = $post->menu_order; 
         

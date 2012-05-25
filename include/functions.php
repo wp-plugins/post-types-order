@@ -38,12 +38,11 @@
                             </div> 
                             
                             <div class="p_s_item s_f">
-                                <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.nsp-code.com%2F&amp;send=false&amp;layout=button_count&amp;width=50&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=arial&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:50px; height:21px;" allowTransparency="true"></iframe>
+                                <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.nsp-code.com%2F&amp;send=false&amp;layout=button_count&amp;width=75&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=arial&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:75px; height:21px;" allowTransparency="true"></iframe>
                             </div>
                             
                             <div class="clear"></div>
                         </div>
-                        <div class="clear"></div>
                         
                         <div id="donate_form">
                             <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
@@ -56,7 +55,7 @@
                     </div>
                     
                     <p>Did you found useful this plug-in? Please support our work with a donation or write an article about this plugin in your blog with a link to our site <strong>http://www.nsp-code.com/</strong>.</p>
-                    <h4>Did you know there is available a more advanced version of this plug-in? <a target="_blank" href="http://www.nsp-code.com/wordpress-plugins/post-types-order">Read more</a></h4>
+                    <h4>Did you know there is available an Advanced version of this plug-in? <a target="_blank" href="http://www.nsp-code.com/premium-plugins/wordpress-plugins/advanced-post-types-order/">Read more</a></h4>
                     <p>Check our <a target="_blank" href="http://wordpress.org/extend/plugins/taxonomy-terms-order/">Category Order - Taxonomy Terms Order</a> plugin which allow to custom sort all categories and custom taxonomies terms </p>
                 </div>
             
