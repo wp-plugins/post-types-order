@@ -3,14 +3,14 @@ Contributors: Nsp Code
 Donate link: http://www.nsp-code.com/donate.php
 Tags: posts order, post order, post type order, custom post type order, post types order, pages order, admin posts order
 Requires at least: 2.8
-Tested up to: 3.2.2
+Tested up to: 3.4.2
 Stable tag: 1.5.4
 
 Order Post Types Objects (posts, any custom post types) using a Drag and Drop Sortable JavaScript AJAX capability
 
 == Description ==
 
-<strong>Over 85000 DOWNLOADS in couple months and near PERFECT ratting out of 100 REVIEWS</strong>. <br />
+<strong>Over 130.000 DOWNLOADS in couple months and near PERFECT ratting out of 130 REVIEWS</strong>. <br />
 A powerfull plugin, Order Posts and Post Types Objects using a Drag and Drop Sortable javascript capability
 It allow to reorder the posts for any custom post types you defined, including the default Posts. Also you can have the admin posts interface sorted per your new sort. Post Order has never been easier.
 <br />This plugin it's developed by <a target="_blank" href="http://www.nsp-code.com">Nsp-Code</a>
@@ -37,7 +37,7 @@ Yes you can. There's an option to autoupdate the wordpress queries so the posts 
 
 = What kind of posts/pages this plugin allow me to sort? =
 
-You can sort ALL post types that you have defined into your wordpress. Posts, Pages, Movies, Reviews, Data etc..
+You can sort ALL post types that you have defined into your wordpress. Posts, Movies, Reviews, Data etc..
 
 = Ok, i understand about the template post types order, how about the admin interface? =
 
