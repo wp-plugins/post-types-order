@@ -1,18 +1,34 @@
 === Post Types Order  ===
 Contributors: Nsp Code
 Donate link: http://www.nsp-code.com/donate.php
-Tags: posts order, post order, post type order, custom post type order, post types order, pages order, admin posts order
+Tags: post order, post type order, custom order, admin posts order
 Requires at least: 2.8
 Tested up to: 3.4.2
 Stable tag: 1.5.4
 
-Order Post Types Objects (posts, any custom post types) using a Drag and Drop Sortable JavaScript AJAX capability
+Order Post Types Objects (posts, any custom post types) using a Drag and Drop Sortable JavaScript AJAX interface. 
 
 == Description ==
 
 <strong>Over 130.000 DOWNLOADS in couple months and near PERFECT ratting out of 130 REVIEWS</strong>. <br />
-A powerfull plugin, Order Posts and Post Types Objects using a Drag and Drop Sortable javascript capability
+A powerful plugin, Order Posts and Post Types Objects using a Drag and Drop Sortable JavaScript capability.
 It allow to reorder the posts for any custom post types you defined, including the default Posts. Also you can have the admin posts interface sorted per your new sort. Post Order has never been easier.
+
+= Usage =
+This was built considering for everyone to be able to use no matter the WordPress experience, so it's very easy:
+* Install the plugin through the Install Plugins interface or by uploading the `post-types-order` folder to your `/wp-content/plugins/` directory.
+* Activate the Post Order plugin.
+* A new setting page will be created within Settings > Post Types Order, you should check with that, and make a first options save. 
+* Using the AutoSort option as ON you don't need to worry about any code changes, the plugin will do the post order update on fly. 
+* Use the Re-Order interface which appear to every custom post type (non-hierarchical) to change the post order to a new one.
+
+= Example of Usage =
+<iframe src="http://www.screenr.com/embed/z178" width="530" height="360" frameborder="0"></iframe> 
+
+As you can see just a matter of drag and drop and post ordering will change on front side right away.
+If for some reason the post order does not update on your front side, you either do something wrong or the theme code you are using does not use a standard query per WordPress Codex rules and regulations. But we can still help, use the forum to report your issue as there are many peoples who gladly help or get in touch with us.
+
+<br />
 <br />This plugin it's developed by <a target="_blank" href="http://www.nsp-code.com">Nsp-Code</a>
 
 == Installation ==
