@@ -50,15 +50,15 @@ Feel free to contact me at electronice_delphi@yahoo.com
 
 = I have no PHP knowledge at all, i will still be able to use this plugin? =
 
-Yes you can. There's an option to autoupdate the wordpress queries so the posts will be returned in the required order. Anyway this can be turned off to allow customized code usage.
+Absolutely you can! Unlike many of other plugins, you don't have to do any code changes to make your post order to change accordingly to custom defined post order. There is an option to autoupdate the WordPress queries so the posts order will be returned in the required order. Anyway this can be turned off to allow customized code usage.
 
 = What kind of posts/pages this plugin allow me to sort? =
 
-You can sort ALL post types that you have defined into your wordpress. Posts, Movies, Reviews, Data etc..
+You can sort ALL post types that you have defined into your wordpress as long they are not hierarhically defined: Posts (default WordPress custom post type), Movies, Reviews, Data etc..
 
 = Ok, i understand about the template post types order, how about the admin interface? =
 
-There's a option you can trigger, to see the post types as you defined in the sort list.
+There's a option you can trigger, to see the post types order as you defined in the sort list, right into the main admin post list interface.
 
 = There is a feature that i want it implemented, can you do something about it? =
 
@@ -68,7 +68,7 @@ All ideas are welcome and i put them on my list to be implemented into the new v
 
 = 1.5.4 = 
  - Updates/Fixes
-
+ 
 = 1.5.1 = 
  - Updates/Fixes
 
@@ -80,6 +80,7 @@ All ideas are welcome and i put them on my list to be implemented into the new v
 
 = 1.4.1 = 
  - Re-Order Menu Item Appearance fix for update versions
+ - Improved post order code
  
 = 1.3.9 =
  - Re-Order Menu Item Appearance fix   
