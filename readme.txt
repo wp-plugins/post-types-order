@@ -16,6 +16,7 @@ It allow to reorder the posts for any custom post types you defined, including t
 
 = Usage =
 This was built considering for everyone to be able to use no matter the WordPress experience, so it's very easy:
+
 * Install the plugin through the Install Plugins interface or by uploading the `post-types-order` folder to your `/wp-content/plugins/` directory.
 * Activate the Post Order plugin.
 * A new setting page will be created within Settings > Post Types Order, you should check with that, and make a first options save. 
