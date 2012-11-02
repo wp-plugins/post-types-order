@@ -23,7 +23,7 @@ This was built considering for everyone to be able to use no matter the WordPres
 * Use the Re-Order interface which appear to every custom post type (non-hierarchical) to change the post order to a new one.
 
 = Example of Usage =
-<iframe src="http://www.screenr.com/embed/z178" width="530" height="360" frameborder="0"></iframe> 
+[youtube http://www.youtube.com/watch?v=VEbNKFSfhCc] 
 
 As you can see just a matter of drag and drop and post ordering will change on front side right away.
 If for some reason the post order does not update on your front side, you either do something wrong or the theme code you are using does not use a standard query per WordPress Codex rules and regulations. But we can still help, use the forum to report your issue as there are many peoples who gladly help or get in touch with us.
