@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Post Types Order\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-11-29 09:26-0300\n"
-"PO-Revision-Date: 2012-12-07 14:22+0200\n"
+"PO-Revision-Date: 2012-12-07 14:34+0200\n"
 "Last-Translator: Gabriel Reguly <gabriel@ppgr.com.br>\n"
 "Language-Team: http://ppgr.com.br/\n"
 "MIME-Version: 1.0\n"
@@ -17,16 +17,16 @@ msgstr ""
 
 #: post-types-order/post-types-order.php:41
 msgid "Post Types Order"
-msgstr "Ordenar Posts"
+msgstr "Post Types Order"
 
 #: post-types-order/post-types-order.php:176
 msgid "Invalid post type"
-msgstr "Type de post inválido"
+msgstr "Post Type Invalid"
 
 #: post-types-order/post-types-order.php:216
 #: post-types-order/post-types-order.php:218
 msgid "Re-Order"
-msgstr "Reordenar"
+msgstr "Re-Order"
 
 #: post-types-order/post-types-order.php:229
 #, php-format
@@ -37,33 +37,36 @@ msgstr "Reordenar %s"
 msgid ""
 "This plugin can't work without javascript, because it use drag and drop and "
 "AJAX."
-msgstr "Este plugin precisa de JavaScript para funcionar."
+msgstr ""
+"Acest plugin nu poate functiona fara JavaScript pentru ca foloseste o "
+"capabilitate AJAX"
 
 #: post-types-order/post-types-order.php:242
 msgid "Update"
-msgstr "Atualizar"
+msgstr "Actualizare"
 
 #: post-types-order/post-types-order.php:257
 msgid "Item order updated"
-msgstr "Ordem alterada"
+msgstr "Ordonare salvata"
 
 #: post-types-order/post-types-order.php:263
 msgid ""
 "Did you found this plug-in useful? Please support our work with a donation."
 msgstr ""
-"Você considera útil este plugin? Por favor, faça uma doação para o autor."
+"Ai gasit acest plugin folositor? The rog ajuta exhipa sa dezvolte softul in "
+"continuare printr-o donatie"
 
 #: post-types-order/post-types-order.php:283
 msgid "Pages"
-msgstr "Páginas"
+msgstr "Pagini"
 
 #: post-types-order/include/options.php:6
 msgid "Settings Saved"
-msgstr "Configuração salva"
+msgstr "Setari Salvate"
 
 #: post-types-order/include/options.php:13
 msgid "General Setings"
-msgstr "Configuração geral"
+msgstr "Setari Generale"
 
 #: post-types-order/include/options.php:16
 msgid "General"
@@ -71,15 +74,15 @@ msgstr "Geral"
 
 #: post-types-order/include/options.php:21
 msgid "Minimum Level to use this plugin"
-msgstr "Nível minimo para utilizar este plugin"
+msgstr "Niveulul minim pentru a utiliza Re-order"
 
 #: post-types-order/include/options.php:25
 msgid "Subscriber"
-msgstr "Assinante"
+msgstr "Subscriber"
 
 #: post-types-order/include/options.php:26
 msgid "Contributor"
-msgstr "Contribuidor"
+msgstr "Contributor"
 
 #: post-types-order/include/options.php:27
 msgid "Author"
@@ -91,8 +94,8 @@ msgstr "Editor"
 
 #: post-types-order/include/options.php:29
 msgid "Administrator"
-msgstr "Administrador"
+msgstr "Administrator"
 
 #: post-types-order/include/options.php:36
 msgid "Save Settings"
-msgstr "Salvar configuração"
+msgstr "Salveaza"

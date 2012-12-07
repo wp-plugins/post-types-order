@@ -8,7 +8,7 @@ function cpt_plugin_options()
         if (isset($_POST['form_submit']))
             {
                     
-                $options['level'] = $_POST['level'];
+                $options['capability'] = $_POST['capability'];
                 
                 $options['autosort']    = isset($_POST['autosort'])     ? $_POST['autosort']    : '';
                 $options['adminsort']   = isset($_POST['adminsort'])    ? $_POST['adminsort']   : '';
@@ -25,37 +25,37 @@ function cpt_plugin_options()
                     ?>
                       <div class="wrap"> 
                         <div id="icon-settings" class="icon32"></div>
-                            <h2>General Settings</h2>
+                            <h2><?php _e('General Settings', 'cpt') ?></h2>
                            
                            <?php cpt_info_box(); ?>
                            
                             <form id="form_data" name="form" method="post">   
                                 <br />
-                                <h2 class="subtitle">General</h2>                              
+                                <h2 class="subtitle"><?php _e('General', 'cpt') ?></h2>                              
                                 <table class="form-table">
                                     <tbody>
                             
                                         <tr valign="top">
-                                            <th scope="row" style="text-align: right;"><label>Minimum Level to use this plugin</label></th>
+                                            <th scope="row" style="text-align: right;"><label><?php _e('Minimum Level to use this plugin', 'cpt') ?></label></th>
                                             <td>
-                                                <select id="role" name="level">
-                                                    <option value="0" <?php if ($options['level'] == "0") echo 'selected="selected"'?>><?php _e('Subscriber', 'cpt') ?></option>
-                                                    <option value="1" <?php if ($options['level'] == "1") echo 'selected="selected"'?>><?php _e('Contributor', 'cpt') ?></option>
-                                                    <option value="2" <?php if ($options['level'] == "2") echo 'selected="selected"'?>><?php _e('Author', 'cpt') ?></option>
-                                                    <option value="5" <?php if ($options['level'] == "5") echo 'selected="selected"'?>><?php _e('Editor', 'cpt') ?></option>
-                                                    <option value="8" <?php if ($options['level'] == "8") echo 'selected="selected"'?>><?php _e('Administrator', 'cpt') ?></option>
+                                                <select id="role" name="capability">
+                                                    <option value="read" <?php if (isset($options['capability']) && $options['capability'] == "read") echo 'selected="selected"'?>><?php _e('Subscriber', 'cpt') ?></option>
+                                                    <option value="edit_posts" <?php if (isset($options['capability']) && $options['capability'] == "edit_posts") echo 'selected="selected"'?>><?php _e('Contributor', 'cpt') ?></option>
+                                                    <option value="publish_posts" <?php if (isset($options['capability']) && $options['capability'] == "publish_posts") echo 'selected="selected"'?>><?php _e('Author', 'cpt') ?></option>
+                                                    <option value="publish_pages" <?php if (isset($options['capability']) && $options['capability'] == "publish_pages") echo 'selected="selected"'?>><?php _e('Editor', 'cpt') ?></option>
+                                                    <option value="install_plugins" <?php if (!isset($options['capability']) || empty($options['capability']) || (isset($options['capability']) && $options['capability'] == "install_plugins")) echo 'selected="selected"'?>><?php _e('Administrator', 'cpt') ?></option>
                                                 </select>
                                             </td>
                                         </tr>
                                         
                                         <tr valign="top">
-                                            <th scope="row" style="text-align: right;"><label>Auto Sort</label></th>
+                                            <th scope="row" style="text-align: right;"><label><?php _e('Auto Sort', 'cpt') ?></label></th>
                                             <td>
                                                 <label for="users_can_register">
                                                 <input type="checkbox" <?php if ($options['autosort'] == "1") {echo ' checked="checked"';} ?> value="1" name="autosort">
                                                 <?php _e("If checked, the plug-in will automatically update the wp-queries to use the new order (<b>No code update is necessarily</b>).<br /> If you need more order customizations you will need to uncheck this and include 'menu_order' into your theme queries", 'cpt') ?>.</label>
                                                 
-                                                <p><a href="javascript:;" onclick="jQuery('#example1').slideToggle();;return false;">Show Examples</a></p>
+                                                <p><a href="javascript:;" onclick="jQuery('#example1').slideToggle();;return false;"><?php _e('Show Examples', 'cpt') ?></a></p>
                                                 <div id="example1" style="display: none">
                                                 
                                                 <p class="example"><br /><?php _e('The following PHP code will still return the post in the set-up Order', 'cpt') ?>:</p>
@@ -95,7 +95,7 @@ $args = array(
                                         
                                         
                                         <tr valign="top">
-                                            <th scope="row" style="text-align: right;"><label>Admin Sort</label></th>
+                                            <th scope="row" style="text-align: right;"><label><?php _e('Admin Sort', 'cpt') ?></label></th>
                                             <td>
                                                 <label for="users_can_register">
                                                 <input type="checkbox" <?php if ($options['adminsort'] == "1") {echo ' checked="checked"';} ?> value="1" name="adminsort">
@@ -107,7 +107,8 @@ $args = array(
                                 </table>
                                                    
                                 <p class="submit">
-                                    <input type="submit" name="Submit" class="button-primary" value="<?php _e('Save Settings', 'cpt') ?>">
+                                    <input type="submit" name="Submit" class="button-primary" value="<?php 
+                                    _e('Save Settings', 'cpt') ?>">
                                </p>
                             
                                 <input type="hidden" name="form_submit" value="true" />

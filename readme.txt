@@ -3,8 +3,8 @@ Contributors: Nsp Code
 Donate link: http://www.nsp-code.com/donate.php
 Tags: post order, post type order, custom order, admin posts order
 Requires at least: 2.8
-Tested up to: 3.4.2
-Stable tag: 1.5.4
+Tested up to: 3.5
+Stable tag: 1.5.7
 
 Order Post Types Objects (posts, any custom post types) using a Drag and Drop Sortable JavaScript AJAX interface. 
 
@@ -65,6 +65,12 @@ There's a option you can trigger, to see the post types order as you defined in 
 All ideas are welcome and i put them on my list to be implemented into the new versions. Anyway this may take time, but if you are in a rush, please consider a small donation and we can arrange something.
 
 == Change Log ==
+
+= 1.5.7 = 
+ - Updates/Fixes
+ - Using Capabilities instead levels
+ - Updating certain code for WordPress 3.5 compatibility
+ - Set default order as seccondary query order param
 
 = 1.5.4 = 
  - Updates/Fixes

@@ -2,10 +2,10 @@
 /*
 Plugin Name: Post Types Order
 Plugin URI: http://www.nsp-code.com
-Description: Order Posts and Post Types Objects using a Drag and Drop Sortable javascript capability
-Author: NSP CODE
+Description: Posts Order and Post Types Objects Order using a Drag and Drop Sortable javascript capability
+Author: Nsp Code
 Author URI: http://www.nsp-code.com 
-Version: 1.5.4
+Version: 1.5.7
 */
 
 define('CPTPATH',   plugin_dir_path(__FILE__));
@@ -28,8 +28,8 @@ function CPTO_activated()
         if (!isset($options['adminsort']))
             $options['adminsort'] = '1';
             
-        if (!isset($options['level']))
-            $options['level'] = 8;
+        if (!isset($options['capability']))
+            $options['capability'] = 'install_plugins';
             
         update_option('cpto_options', $options);
     }
@@ -58,19 +58,27 @@ function CPTO_pre_get_posts($query)
                 if (isset($query->query['suppress_filters']))
                     $query->query['suppress_filters'] = FALSE;    
                 
+     
                 if (isset($query->query_vars['suppress_filters']))
                     $query->query_vars['suppress_filters'] = FALSE;
+     
             }
             
         return $query;
     }
 
-add_filter('posts_orderby', 'CPTOrderPosts');
-function CPTOrderPosts($orderBy) 
+add_filter('posts_orderby', 'CPTOrderPosts', 99, 2);
+function CPTOrderPosts($orderBy, $query) 
     {
         global $wpdb;
         
         $options = get_option('cpto_options');
+        
+        //ignore the bbpress
+        if (isset($query->query_vars['post_type']) && ((is_array($query->query_vars['post_type']) && in_array("reply", $query->query_vars['post_type'])) || ($query->query_vars['post_type'] == "reply")))
+            return $orderBy;
+        if (isset($query->query_vars['post_type']) && ((is_array($query->query_vars['post_type']) && in_array("topic", $query->query_vars['post_type'])) || ($query->query_vars['post_type'] == "topic")))
+            return $orderBy;
         
         if (is_admin())
                 {
@@ -80,7 +88,7 @@ function CPTOrderPosts($orderBy)
             else
                 {
                     if ($options['autosort'] == "1")
-                        $orderBy = "{$wpdb->posts}.menu_order, {$wpdb->posts}.post_date DESC";
+                        $orderBy = "{$wpdb->posts}.menu_order, " . $orderBy;
                 }
 
         return($orderBy);
@@ -96,20 +104,16 @@ function CPTO_admin_notices()
             return;
         ?>
             <div class="error fade">
-                <p><strong>Post Types Order must be configured. Please go to <a href="<?php echo get_admin_url() ?>options-general.php?page=cpto-options">Settings Page</a> make the configuration and save</strong></p>
+                <p><strong><?php _e('Post Types Order must be configured. Please go to', 'cpt') ?> <a href="<?php echo get_admin_url() ?>options-general.php?page=cpto-options"><?php _e('Settings Page', 'cpt') ?></a> <?php _e('make the configuration and save', 'cpt') ?></strong></p>
             </div>
         <?php
     }
 
 
-add_action( 'plugins_loaded', 'cpto_load_textdomain', 99 ); 
+add_action( 'plugins_loaded', 'cpto_load_textdomain'); 
 function cpto_load_textdomain() 
     {
-        $locale = get_locale();
-        $mofile = CPTPATH . '/lang/cpt-' . $locale . '.mo';
-        if ( file_exists( $mofile ) ) {
-            load_textdomain( 'cppt', $mofile );
-        }
+        load_plugin_textdomain('cpt', FALSE, dirname( plugin_basename( __FILE__ ) ) . '/lang');
     }
   
 add_action('admin_menu', 'cpto_plugin_menu'); 
@@ -129,7 +133,12 @@ function initCPTO()
 
         if (is_admin())
             {
-                if (is_numeric($options['level']))
+                if(isset($options['capability']) && !empty($options['capability']))
+                    {
+                        if(current_user_can($options['capability']))
+                            $custom_post_type_order = new CPTO(); 
+                    }
+                else if (is_numeric($options['level']))
                     {
                         if (userdata_get_user_level(true) >= $options['level'])
                             $custom_post_type_order = new CPTO();     
@@ -188,11 +197,11 @@ function cpto_get_previous_post_where($where)
                 
         if (count($results) > 0)
             {
-                $where = $wpdb->prepare("WHERE p.menu_order < '".$current_menu_order."' AND p.post_type = '". $post->post_type ."' AND p.post_status = 'publish' $posts_in_ex_cats_sql");        
+                $where = "WHERE p.menu_order < '".$current_menu_order."' AND p.post_type = '". $post->post_type ."' AND p.post_status = 'publish' $posts_in_ex_cats_sql";
             }
             else
                 {
-                    $where = $wpdb->prepare("WHERE p.post_date < '".$current_post_date."' AND p.post_type = '". $post->post_type ."' AND p.post_status = 'publish' AND p.ID != '". $post->ID ."' $posts_in_ex_cats_sql");            
+                    $where = "WHERE p.post_date < '".$current_post_date."' AND p.post_type = '". $post->post_type ."' AND p.post_status = 'publish' AND p.ID != '". $post->ID ."' $posts_in_ex_cats_sql";
                 }
         
         return $where;
@@ -265,11 +274,11 @@ function cpto_get_next_post_where($where)
         
         if (count($results) > 0)
             {
-                $where = $wpdb->prepare("WHERE p.menu_order > '".$current_menu_order."' AND p.post_type = '". $post->post_type ."' AND p.post_status = 'publish' $posts_in_ex_cats_sql");        
+                $where = "WHERE p.menu_order > '".$current_menu_order."' AND p.post_type = '". $post->post_type ."' AND p.post_status = 'publish' $posts_in_ex_cats_sql";
             }
             else
                 {
-                    $where = $wpdb->prepare("WHERE p.post_date > '".$current_post_date."' AND p.post_type = '". $post->post_type ."' AND p.post_status = 'publish' AND p.ID != '". $post->ID ."' $posts_in_ex_cats_sql");            
+                    $where = "WHERE p.post_date > '".$current_post_date."' AND p.post_type = '". $post->post_type ."' AND p.post_status = 'publish' AND p.ID != '". $post->ID ."' $posts_in_ex_cats_sql";
                 }
         
         return $where;
@@ -406,17 +415,38 @@ class CPTO
 		        global $userdata;
                 //put a menu for all custom_type
                 $post_types = get_post_types();
+                
+                $options = get_option('cpto_options'); 
+                //get the required user capability
+                $capability = '';
+                if(isset($options['capability']) && !empty($options['capability']))
+                    {
+                        $capability = $options['capability'];
+                    }
+                else if (is_numeric($options['level']))
+                    {
+                        $capability = userdata_get_user_level();
+                    }
+                    else
+                        {
+                            $capability = 'install_plugins';  
+                        }
+                
                 foreach( $post_types as $post_type_name ) 
                     {
                         if ($post_type_name == 'page')
                             continue;
+                            
+                        //ignore bbpress
+                        if ($post_type_name == 'reply' || $post_type_name == 'topic')
+                            continue; 
                         
                         if ($post_type_name == 'post')
-                            add_submenu_page('edit.php', 'Re-Order', 'Re-Order', userdata_get_user_level(), 'order-post-types-'.$post_type_name, array(&$this, 'SortPage') );
+                            add_submenu_page('edit.php', 'Re-Order', 'Re-Order', $capability, 'order-post-types-'.$post_type_name, array(&$this, 'SortPage') );
                         else
                             {
                                 if (!is_post_type_hierarchical($post_type_name))
-                                    add_submenu_page('edit.php?post_type='.$post_type_name, 'Re-Order', 'Re-Order', userdata_get_user_level(), 'order-post-types-'.$post_type_name, array(&$this, 'SortPage') );
+                                    add_submenu_page('edit.php?post_type='.$post_type_name, 'Re-Order', 'Re-Order', $capability, 'order-post-types-'.$post_type_name, array(&$this, 'SortPage') );
                             }
 		            }
 	        }
@@ -435,7 +465,7 @@ class CPTO
 			        
 			        <noscript>
 				        <div class="error message">
-					        <p>This plugin can't work without javascript, because it's use drag and drop and AJAX.</p>
+					        <p><?php _e('This plugin can\'t work without javascript, because it\'s use drag and drop and AJAX.', 'cpt') ?></p>
 				        </div>
 			        </noscript>
 			        
@@ -464,7 +494,7 @@ class CPTO
 					        jQuery("#sortable").disableSelection();
 					        jQuery("#save-order").bind( "click", function() {
 						        jQuery.post( ajaxurl, { action:'update-custom-type-order', order:jQuery("#sortable").sortable("serialize") }, function() {
-							        jQuery("#ajax-response").html('<div class="message updated fade"><p>Items Order Updates</p></div>');
+							        jQuery("#ajax-response").html('<div class="message updated fade"><p><?php _e('Items Order Updated', 'cpt') ?></p></div>');
 							        jQuery("#ajax-response div").delay(3000).hide("slow");
 						        });
 					        });
