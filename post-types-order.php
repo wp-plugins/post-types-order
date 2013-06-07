@@ -5,15 +5,12 @@ Plugin URI: http://www.nsp-code.com
 Description: Posts Order and Post Types Objects Order using a Drag and Drop Sortable javascript capability
 Author: Nsp Code
 Author URI: http://www.nsp-code.com 
-Version: 1.5.7
+Version: 1.5.8
 */
 
 define('CPTPATH',   plugin_dir_path(__FILE__));
 define('CPTURL',    plugins_url('', __FILE__));
-/*
-define('CPTPATH',   WP_PLUGIN_DIR  .'/post-types-order');
-define('CPTURL',    WP_PLUGIN_URL .'/post-types-order'); 
-*/
+
 
 register_deactivation_hook(__FILE__, 'CPTO_deactivated');
 register_activation_hook(__FILE__, 'CPTO_activated');
@@ -87,6 +84,10 @@ function CPTOrderPosts($orderBy, $query)
                 }
             else
                 {
+                    //ignore search
+                    if($query->is_search())
+                        return($orderBy);
+                    
                     if ($options['autosort'] == "1")
                         $orderBy = "{$wpdb->posts}.menu_order, " . $orderBy;
                 }
@@ -442,7 +443,7 @@ class CPTO
                             continue; 
                         
                         if ($post_type_name == 'post')
-                            add_submenu_page('edit.php', 'Re-Order', 'Re-Order', $capability, 'order-post-types-'.$post_type_name, array(&$this, 'SortPage') );
+                            add_submenu_page('edit.php', __('Re-Order', 'cpt'), __('Re-Order', 'cpt'), $capability, 'order-post-types-'.$post_type_name, array(&$this, 'SortPage') );
                         else
                             {
                                 if (!is_post_type_hierarchical($post_type_name))
@@ -457,7 +458,7 @@ class CPTO
 		        ?>
 		        <div class="wrap">
 			        <div class="icon32" id="icon-edit"><br></div>
-                    <h2><?php echo $this->current_post_type->labels->singular_name . ' -  Re-order '?></h2>
+                    <h2><?php echo $this->current_post_type->labels->singular_name . ' -  '. __('Re-Order', 'cpt') ?></h2>
 
                     <?php cpt_info_box(); ?>  
                     
@@ -478,7 +479,7 @@ class CPTO
 			        </div>
 			        
 			        <p class="submit">
-				        <a href="#" id="save-order" class="button-primary">Update</a>
+				        <a href="#" id="save-order" class="button-primary"><?php _e('Update', 'cpt' ) ?></a>
 			        </p>
 			        
 			        <script type="text/javascript">

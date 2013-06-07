@@ -1,8 +1,8 @@
-#sortable { list-style-type: none; margin: 10px 0 0; padding: 0; width: 100%; }
-#sortable ul { margin-left:20px; list-style: none; }
-#sortable li { padding: 2px 0px; margin: 4px 0px;  border: 1px solid #DDDDDD; cursor: move; -moz-border-radius:6px;}
-#sortable li span { display: block; background: #f7f7f7;  padding: 5px 10px; color:#808080; font-size:13px; font-weight:bold;}
-#sortable li.placeholder{border: dashed 2px #ccc;background-color:#FFF;height:20px;}
+#order-post-type #sortable { list-style-type: none; margin: 10px 0 0; padding: 0; width: 100%; }
+#order-post-type #sortable ul { margin-left:20px; list-style: none; }
+#order-post-type #sortable li { padding: 2px 0px; margin: 4px 0px;  border: 1px solid #DDDDDD; cursor: move; -moz-border-radius:6px;}
+#order-post-type #sortable li span { display: block; background: #f7f7f7;  padding: 5px 10px; color:#808080; font-size:13px; font-weight:bold;}
+#order-post-type #sortable li.placeholder{border: dashed 2px #ccc;background-color:#FFF;height:25px;}
 
 #icon-settings {background-image:url("../images/admin-icon-settings.gif");background-repeat:no-repeat;}
 h2.subtitle {font-size: 15px; font-style: italic; font-weight: bold}

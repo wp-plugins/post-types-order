@@ -3,14 +3,14 @@ Contributors: Nsp Code
 Donate link: http://www.nsp-code.com/donate.php
 Tags: post order, post type order, custom order, admin posts order
 Requires at least: 2.8
-Tested up to: 3.5
-Stable tag: 1.5.7
+Tested up to: 3.6
+Stable tag: 1.5.8
 
 Order Post Types Objects (posts, any custom post types) using a Drag and Drop Sortable JavaScript AJAX interface. 
 
 == Description ==
 
-<strong>Over 130.000 DOWNLOADS in couple months and near PERFECT ratting out of 130 REVIEWS</strong>. <br />
+<strong>Over 230.000 DOWNLOADS and near PERFECT ratting out of 180 REVIEWS</strong>. <br />
 A powerful plugin, Order Posts and Post Types Objects using a Drag and Drop Sortable JavaScript capability.
 It allow to reorder the posts for any custom post types you defined, including the default Posts. Also you can have the admin posts interface sorted per your new sort. Post Order has never been easier.
 
@@ -30,7 +30,7 @@ As you can see just a matter of drag and drop and post ordering will change on f
 If for some reason the post order does not update on your front side, you either do something wrong or the theme code you are using does not use a standard query per WordPress Codex rules and regulations. But we can still help, use the forum to report your issue as there are many peoples who gladly help or get in touch with us.
 
 <br />
-<br />This plugin it's developed by <a target="_blank" href="http://www.nsp-code.com">Nsp-Code</a>
+<br />This plugin is developed by <a target="_blank" href="http://www.nsp-code.com">Nsp-Code</a>
 
 == Installation ==
 
@@ -65,6 +65,13 @@ There's a option you can trigger, to see the post types order as you defined in 
 All ideas are welcome and i put them on my list to be implemented into the new versions. Anyway this may take time, but if you are in a rush, please consider a small donation and we can arrange something.
 
 == Change Log ==
+
+= 1.5.8 = 
+ - Updates/Fixes
+ - Ignore Search queries when Autosort is ON
+ - Text Instances translatable fix
+ - Italian translation - Black Studio http://www.blackstudio.it 
+ - Spanish translation - Marcelo Cannobbio
 
 = 1.5.7 = 
  - Updates/Fixes
@@ -122,6 +129,6 @@ Make sure you get the latest version
 
 == Localization ==
 
-Currently only available in English and Brazilian Portuguese.
+Currently available in English, Brazilian Portuguese, Spanish, Romanian, Italian.
 Want to contribute with a translation to your language? Please contact me at electronice_delphi@yahoo.com
 http://www.nsp-code.com
