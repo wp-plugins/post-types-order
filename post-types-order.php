@@ -5,7 +5,7 @@ Plugin URI: http://www.nsp-code.com
 Description: Posts Order and Post Types Objects Order using a Drag and Drop Sortable javascript capability
 Author: Nsp Code
 Author URI: http://www.nsp-code.com 
-Version: 1.6.1
+Version: 1.6.2
 */
 
 define('CPTPATH',   plugin_dir_path(__FILE__));
@@ -43,7 +43,7 @@ function CPTO_pre_get_posts($query)
     {
         //--  lee@cloudswipe.com requirement
         global $post;
-        if($post->ID < 1) 
+        if(is_object($post) && $post->ID < 1) 
             { return $query; }  // Stop running the function if this is a virtual page
         //--
            
