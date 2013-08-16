@@ -3,14 +3,14 @@ Contributors: Nsp Code
 Donate link: http://www.nsp-code.com/donate.php
 Tags: post order, post type order, custom order, admin posts order
 Requires at least: 2.8
-Tested up to: 3.5.1
-Stable tag: 1.5.8
+Tested up to: 3.6
+Stable tag: 1.6.1
 
 Order Post Types Objects (posts, any custom post types) using a Drag and Drop Sortable JavaScript AJAX interface. 
 
 == Description ==
 
-<strong>Over 230.000 DOWNLOADS and near PERFECT ratting out of 180 REVIEWS</strong>. <br />
+<strong>Over 290.000 DOWNLOADS and near PERFECT ratting out of 180 REVIEWS</strong>. <br />
 A powerful plugin, Order Posts and Post Types Objects using a Drag and Drop Sortable JavaScript capability.
 It allow to reorder the posts for any custom post types you defined, including the default Posts. Also you can have the admin posts interface sorted per your new sort. Post Order has never been easier.
 
@@ -65,6 +65,12 @@ There's a option you can trigger, to see the post types order as you defined in 
 All ideas are welcome and i put them on my list to be implemented into the new versions. Anyway this may take time, but if you are in a rush, please consider a small donation and we can arrange something.
 
 == Change Log ==
+
+= 1.6.1 = 
+ - Updates/Fixes
+ - Menu Walker nottices Fix
+ - Hebrew translation - Lunasite Team http://www.lunasite.co.il
+ - Dutch translation - Denver Sessink
 
 = 1.5.8 = 
  - Updates/Fixes

@@ -5,7 +5,7 @@ Plugin URI: http://www.nsp-code.com
 Description: Posts Order and Post Types Objects Order using a Drag and Drop Sortable javascript capability
 Author: Nsp Code
 Author URI: http://www.nsp-code.com 
-Version: 1.5.8
+Version: 1.6.1
 */
 
 define('CPTPATH',   plugin_dir_path(__FILE__));
@@ -41,7 +41,12 @@ include_once(CPTPATH . '/include/functions.php');
 add_filter('pre_get_posts', 'CPTO_pre_get_posts');
 function CPTO_pre_get_posts($query)
     {
-       
+        //--  lee@cloudswipe.com requirement
+        global $post;
+        if($post->ID < 1) 
+            { return $query; }  // Stop running the function if this is a virtual page
+        //--
+           
         $options = get_option('cpto_options');
         if (is_admin())
             {
@@ -314,19 +319,19 @@ class Post_Types_Order_Walker extends Walker
         var $db_fields = array ('parent' => 'post_parent', 'id' => 'ID');
 
 
-        function start_lvl(&$output, $depth) {
+        function start_lvl(&$output, $depth = 0, $args = array()) {
             $indent = str_repeat("\t", $depth);
             $output .= "\n$indent<ul class='children'>\n";
         }
 
 
-        function end_lvl(&$output, $depth) {
+        function end_lvl(&$output, $depth = 0, $args = array()) {
             $indent = str_repeat("\t", $depth);
             $output .= "$indent</ul>\n";
         }
 
 
-        function start_el(&$output, $page, $depth, $args) {
+        function start_el(&$output, $page, $depth = 0, $args = array()) {
             if ( $depth )
                 $indent = str_repeat("\t", $depth);
             else
@@ -338,7 +343,7 @@ class Post_Types_Order_Walker extends Walker
         }
 
 
-        function end_el(&$output, $page, $depth) {
+        function end_el(&$output, $page, $depth = 0, $args = array()) {
             $output .= "</li>\n";
         }
 
