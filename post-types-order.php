@@ -5,7 +5,7 @@ Plugin URI: http://www.nsp-code.com
 Description: Posts Order and Post Types Objects Order using a Drag and Drop Sortable javascript capability
 Author: Nsp Code
 Author URI: http://www.nsp-code.com 
-Version: 1.6.2
+Version: 1.6.5
 */
 
 define('CPTPATH',   plugin_dir_path(__FILE__));
@@ -331,7 +331,7 @@ class Post_Types_Order_Walker extends Walker
         }
 
 
-        function start_el(&$output, $page, $depth = 0, $args = array()) {
+        function start_el(&$output, $page, $depth = 0, $args = array(), $id = 0) {
             if ( $depth )
                 $indent = str_repeat("\t", $depth);
             else
