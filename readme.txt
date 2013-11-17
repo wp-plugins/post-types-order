@@ -3,7 +3,7 @@ Contributors: Nsp Code
 Donate link: http://www.nsp-code.com/donate.php
 Tags: post order, post type order, custom order, admin posts order
 Requires at least: 2.8
-Tested up to: 3.6
+Tested up to: 3.7.1
 Stable tag: 1.6.5
 
 Post Order and custom Post Type Objects (posts, any custom post types) using a Drag and Drop Sortable JavaScript AJAX interface. 
