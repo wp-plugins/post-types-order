@@ -10,7 +10,7 @@ Post Order and custom Post Type Objects (posts, any custom post types) using a D
 
 == Description ==
 
-<strong>Over 470.000 DOWNLOADS and near PERFECT ratting out of 200 REVIEWS</strong>. <br />
+<strong>Over 630.000 DOWNLOADS and near PERFECT ratting out of 230 REVIEWS</strong>. <br />
 A powerful plugin, Order Posts and Post Types Objects using a Drag and Drop Sortable JavaScript capability.
 It allow to reorder the posts for any custom post types you defined, including the default Posts. Also you can have the admin posts interface sorted per your new sort. Post Order has never been easier.
 
