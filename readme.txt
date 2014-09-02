@@ -3,7 +3,7 @@ Contributors: Nsp Code
 Donate link: http://www.nsp-code.com/donate.php
 Tags: post order, post type order, custom order, admin posts order
 Requires at least: 2.8
-Tested up to: 3.9.1
+Tested up to: 3.9.2
 Stable tag: 1.7.4
 
 Post Order and custom Post Type Objects (posts, any custom post types) using a Drag and Drop Sortable JavaScript AJAX interface. 
@@ -12,13 +12,13 @@ Post Order and custom Post Type Objects (posts, any custom post types) using a D
 
 <strong>Over 630.000 DOWNLOADS and near PERFECT ratting out of 230 REVIEWS</strong>. <br />
 A powerful plugin, Order Posts and Post Types Objects using a Drag and Drop Sortable JavaScript capability.
-It allow to reorder the posts for any custom post types you defined, including the default Posts. Also you can have the admin posts interface sorted per your new sort. Post Order has never been easier.
+It allow to reorder the posts for any custom post types you defined, including the default Posts. Also you can have the admin posts interface sorted per your new sort. <strong>Post Order</strong> has never been easier.
 
 = Usage =
 This was built considering for everyone to be able to use no matter the WordPress experience, so it's very easy:
 
 * Install the plugin through the Install Plugins interface or by uploading the `post-types-order` folder to your `/wp-content/plugins/` directory.
-* Activate the Post Order plugin.
+* Activate the <b>Post Order</b> plugin.
 * A new setting page will be created within Settings > Post Types Order, you should check with that, and make a first options save. 
 * Using the AutoSort option as ON you don't need to worry about any code changes, the plugin will do the post order update on fly. 
 * Use the Re-Order interface which appear to every custom post type (non-hierarchical) to change the post order to a new one.
@@ -66,12 +66,12 @@ All ideas are welcome and i put them on my list to be implemented into the new v
 
 == Change Log ==
 
-= 1.7.4
+= 1.7.4 =
   - Japanese translation - Git6 Sosuke Watanabe  - http://git6.com/  
   - Portuguese translation update - Pedro Mendonça - http://www.pedromendonca.pt 
   - Chinese translation - Coolwp coolwp.com@gmail.com
 
-= 1.7.0
+= 1.7.0 =
   - Swedish translation - Onlinebyrån - http://onlinebyran.se
   - Portuguese translation - Pedro Mendonça - http://www.pedromendonca.pt
   - AJAX save filter
