@@ -67,6 +67,9 @@ All ideas are welcome and i put them on my list to be implemented into the new v
 
 == Change Log ==
 
+= 1.8.2 =
+  - Media Uploaded To after sort fix
+
 = 1.8.1 =
   - Next / Previous sorting apply bug fix for custom taxonomies
   - Portuguese translation update - Pedro Mendon?a - http://www.pedromendonca.pt

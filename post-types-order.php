@@ -5,7 +5,7 @@ Plugin URI: http://www.nsp-code.com
 Description: Posts Order and Post Types Objects Order using a Drag and Drop Sortable javascript capability
 Author: Nsp Code
 Author URI: http://www.nsp-code.com 
-Version: 1.8.1
+Version: 1.8.2
 */
 
     define('CPTPATH',   plugin_dir_path(__FILE__));
@@ -82,9 +82,9 @@ Version: 1.8.1
             if (is_admin())
                     {
                         
-                        if ($options['adminsort'] == "1" && 
+                        if ($options['adminsort'] == "1" || 
                             //ignore when ajax Gallery Edit default functionality 
-                            !($options['adminsort'] == "1" && defined('DOING_AJAX') && isset($_REQUEST['action']) && $_REQUEST['action'] == 'query-attachments')
+                            (defined('DOING_AJAX') && isset($_REQUEST['action']) && $_REQUEST['action'] == 'query-attachments')
                             )
                             {
                                 $orderBy = "{$wpdb->posts}.menu_order, {$wpdb->posts}.post_date DESC";
