@@ -26,27 +26,8 @@
 
                 extract($args, EXTR_SKIP);
 
-                //----
-                if($page->post_type == 'attachment')
-                    $image_id = $page->ID;
-                    else
-                    $image_id = get_post_thumbnail_id( $page->ID , 'post-thumbnail' ); 
-                if ($image_id > 0)
-                        {
-                            $image = wp_get_attachment_image_src( $image_id , array(195,195)); 
-                            if($image !== FALSE)
-                                $image_html =  '<img style="width:50px"  src="'. $image[0] .'" alt="" />';
-                                else
-                                $image_html =  '<img src="'. CPTURL .'/images/nt.png" alt="" />'; 
-                        }
-                        else
-                            {
-                                $image_html =  '<img src="'. CPTURL .'/images/nt.png" alt="" />';    
-                            } 
-                $output .= $indent . '<li id="item_'.$page->ID.'"><span>'. $page->ID . ' ' .apply_filters( 'the_title', $page->post_title, $page->ID ).'</span> ' . $image_html;
-                
-                
-                //$output .= $indent . '<li id="item_'.$page->ID.'"><span>'.apply_filters( 'the_title', $page->post_title, $page->ID ).'</span>';
+                                
+                $output .= $indent . '<li id="item_'.$page->ID.'"><span>'.apply_filters( 'the_title', $page->post_title, $page->ID ).'</span>';
             }
 
 

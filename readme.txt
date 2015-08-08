@@ -69,10 +69,11 @@ All ideas are welcome and i put them on my list to be implemented into the new v
 
 == Change Log ==
 
-= 1.8.3 =
+= 1.8.3.1 =
   - Advanced Custom Fields Page Rule fix
   - Show / Hide Re_order inderface for certain menus. Option available within Settings area.
   - Media Sort interface objects order fix, when query-attachments REQUEST
+  - Bug - Thumbnails test code remove
 
 = 1.8.2 =
   - Media Uploaded To after sort fix
