@@ -72,8 +72,6 @@ All ideas are welcome and i put them on my list to be implemented into the new v
 = 1.8.4.1 =
   - Security improvments
   - Sortable interface styling improvments
-
-= 1.8.4 =
   - Portuguese translation update - Pedro Mendonca - http://www.pedromendonca.pt
   - Text doamin fix for few texts
 
