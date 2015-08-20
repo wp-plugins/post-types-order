@@ -69,6 +69,14 @@ All ideas are welcome and i put them on my list to be implemented into the new v
 
 == Change Log ==
 
+= 1.8.4.1 =
+  - Security improvments
+  - Sortable interface styling improvments
+
+= 1.8.4 =
+  - Portuguese translation update - Pedro Mendonca - http://www.pedromendonca.pt
+  - Text doamin fix for few texts
+
 = 1.8.3.1 =
   - Advanced Custom Fields Page Rule fix
   - Show / Hide Re_order inderface for certain menus. Option available within Settings area.
@@ -80,7 +88,7 @@ All ideas are welcome and i put them on my list to be implemented into the new v
 
 = 1.8.1 =
   - Next / Previous sorting apply bug fix for custom taxonomies
-  - Portuguese translation update - Pedro Mendon?a - http://www.pedromendonca.pt
+  - Portuguese translation update - Pedro Mendonça - http://www.pedromendonca.pt
   - Options - phrase translation fix  
 
 = 1.7.9 =
