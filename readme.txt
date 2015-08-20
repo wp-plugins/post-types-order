@@ -3,7 +3,7 @@ Contributors: Nsp Code
 Donate link: http://www.nsp-code.com/donate.php
 Tags: post order, posts order, sort, post sort, posts sort, post type order, custom order, admin posts order
 Requires at least: 2.8
-Tested up to: 4.2.4
+Tested up to: 4.3
 
 Post Order and custom Post Type Objects (posts, any custom post types) using a Drag and Drop Sortable JavaScript AJAX interface. 
 
@@ -70,7 +70,6 @@ All ideas are welcome and i put them on my list to be implemented into the new v
 == Change Log ==
 
 = 1.8.4.1 =
-  - Security improvments
   - Sortable interface styling improvments
   - Portuguese translation update - Pedro Mendonca - http://www.pedromendonca.pt
   - Text doamin fix for few texts
