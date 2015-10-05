@@ -126,7 +126,7 @@ Version: 1.8.4.1
                 return;
             ?>
                 <div class="error fade">
-                    <p><strong><?php _e('Post Types Order must be configured. Please go to', 'cpt') ?> <a href="<?php echo get_admin_url() ?>options-general.php?page=cpto-options"><?php _e('Settings Page', 'cpt') ?></a> <?php _e('make the configuration and save', 'cpt') ?></strong></p>
+                    <p><strong><?php _e('Post Types Order must be configured. Please go to', 'post-types-order') ?> <a href="<?php echo get_admin_url() ?>options-general.php?page=cpto-options"><?php _e('Settings Page', 'post-types-order') ?></a> <?php _e('make the configuration and save', 'post-types-order') ?></strong></p>
                 </div>
             <?php
         }
@@ -135,7 +135,7 @@ Version: 1.8.4.1
     add_action( 'plugins_loaded', 'cpto_load_textdomain'); 
     function cpto_load_textdomain() 
         {
-            load_plugin_textdomain('cpt', FALSE, dirname( plugin_basename( __FILE__ ) ) . '/lang');
+            load_plugin_textdomain('post-types-order', FALSE, dirname( plugin_basename( __FILE__ ) ) . '/languages');
         }
       
     add_action('admin_menu', 'cpto_plugin_menu'); 

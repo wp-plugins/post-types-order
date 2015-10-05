@@ -73,6 +73,7 @@ All ideas are welcome and i put them on my list to be implemented into the new v
   - Sortable interface styling improvments
   - Portuguese translation update - Pedro Mendonca - http://www.pedromendonca.pt
   - Text doamin fix for few texts
+  - Text domain change to post-types-order
 
 = 1.8.3.1 =
   - Advanced Custom Fields Page Rule fix
