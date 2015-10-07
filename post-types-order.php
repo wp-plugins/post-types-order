@@ -5,7 +5,9 @@ Plugin URI: http://www.nsp-code.com
 Description: Posts Order and Post Types Objects Order using a Drag and Drop Sortable javascript capability
 Author: Nsp Code
 Author URI: http://www.nsp-code.com 
-Version: 1.8.4.1
+Version: 1.8.5
+Text Domain: post-types-order
+Domain Path: /languages/
 */
 
     define('CPTPATH',   plugin_dir_path(__FILE__));
@@ -40,12 +42,20 @@ Version: 1.8.4.1
                 { return $query; }  // Stop running the function if this is a virtual page
             //--
                
-            $options          =     cpt_get_options();
+            //no need if it's admin interface
             if (is_admin())
-                {
-                    //no need if it's admin interface
-                    return false;   
-                }
+                return $query;
+            
+            //check for ignore_custom_sort
+            if (isset($query->query_vars['ignore_custom_sort']) && $query->query_vars['ignore_custom_sort'] === TRUE)
+                return $query; 
+            
+            //ignore if  "nav_menu_item"
+            if(isset($query->query_vars)    &&  isset($query->query_vars['post_type'])   && $query->query_vars['post_type'] ==  "nav_menu_item")
+                return $query;    
+                
+            $options          =     cpt_get_options();
+            
             //if auto sort    
             if ($options['autosort'] == "1")
                 {
@@ -68,6 +78,10 @@ Version: 1.8.4.1
             global $wpdb;
             
             $options          =     cpt_get_options();
+            
+            //check for ignore_custom_sort
+            if (isset($query->query_vars['ignore_custom_sort']) && $query->query_vars['ignore_custom_sort'] === TRUE)
+                return $orderBy;  
             
             //ignore the bbpress
             if (isset($query->query_vars['post_type']) && ((is_array($query->query_vars['post_type']) && in_array("reply", $query->query_vars['post_type'])) || ($query->query_vars['post_type'] == "reply")))
