@@ -4,7 +4,7 @@
         {
             var $current_post_type = null;
             
-            function CPTO() 
+            function __construct() 
                 {
                     add_action( 'admin_init', array(&$this, 'registerFiles'), 11 );
                     add_action( 'admin_init', array(&$this, 'checkPost'), 10 );
